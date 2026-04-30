@@ -1,0 +1,21 @@
+# Gradle / Android
+.gradle/
+.kotlin/
+local.properties
+**/build/
+.idea/
+*.iml
+captures/
+
+# Signing / secrets (NEVER commit)
+*.keystore
+*.jks
+keystore.properties
+.secrets/
+
+# Build artifacts
+*.apk
+
+# OS
+.DS_Store
+Thumbs.db

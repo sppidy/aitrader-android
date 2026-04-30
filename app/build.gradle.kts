@@ -11,6 +11,7 @@ val apiPort = providers.gradleProperty("apiPort").orElse("8443")
 val apiScheme = providers.gradleProperty("apiScheme").orElse("https")
 val wsScheme = providers.gradleProperty("wsScheme").orElse("wss")
 val apiKey = providers.gradleProperty("apiKey").orElse("change-me")
+val forexUrl = providers.gradleProperty("forexUrl").orElse("https://forex.example.com")
 
 android {
     namespace = "com.aitrader.app"
@@ -28,7 +29,7 @@ android {
         buildConfigField("String", "DEFAULT_WS_URL", "\"${wsScheme.get()}://${apiHost.get()}:${apiPort.get()}\"")
         buildConfigField("String", "DEFAULT_API_KEY", "\"${apiKey.get()}\"")
         // Forex defaults
-        buildConfigField("String", "DEFAULT_FOREX_URL", "\"https://forex.example.com\"")
+        buildConfigField("String", "DEFAULT_FOREX_URL", "\"${forexUrl.get()}\"")
     }
 
     signingConfigs {

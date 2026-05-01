@@ -6,6 +6,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ShowChart
+import androidx.compose.material.icons.automirrored.outlined.ShowChart
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material.icons.outlined.*
 import androidx.compose.material3.*
@@ -61,7 +63,7 @@ sealed class Screen(
     data object Dashboard : Screen(DashboardRoute, "Dash", Icons.Filled.Dashboard, Icons.Outlined.Dashboard)
     data object Portfolio : Screen(PortfolioRoute, "Book", Icons.Filled.AccountBalanceWallet, Icons.Outlined.AccountBalanceWallet)
     data object Scanner : Screen(ScannerRoute, "Scan", Icons.Filled.Radar, Icons.Outlined.Radar)
-    data object Charts : Screen(ChartsRoute, "Chart", Icons.Filled.ShowChart, Icons.Outlined.ShowChart)
+    data object Charts : Screen(ChartsRoute, "Chart", Icons.AutoMirrored.Filled.ShowChart, Icons.AutoMirrored.Outlined.ShowChart)
     data object Chat : Screen(ChatRoute, "Agent", Icons.Filled.AutoAwesome, Icons.Outlined.AutoAwesome)
     data object Logs : Screen(LogsRoute, "Log", Icons.Filled.Terminal, Icons.Outlined.Terminal)
     data object Settings : Screen(SettingsRoute, "Cfg", Icons.Filled.Settings, Icons.Outlined.Settings)

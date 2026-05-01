@@ -142,7 +142,10 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.kotlinx.coroutines.android)
 
-    testImplementation(kotlin("test"))
+    // Explicit JUnit 4 binding for kotlin.test — `kotlin("test")` alone doesn't
+    // resolve a framework under AGP 9 + built-in Kotlin, leaving `kotlin.test.Test`
+    // unresolved at compile time.
+    testImplementation(kotlin("test-junit"))
 
     debugImplementation(libs.androidx.ui.tooling)
 

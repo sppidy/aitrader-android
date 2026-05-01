@@ -15,8 +15,8 @@ import com.aitrader.app.ui.theme.Profit
 import java.text.NumberFormat
 import java.util.Locale
 
-private val inrFormat = NumberFormat.getCurrencyInstance(Locale("en", "IN"))
-private val usdFormat = NumberFormat.getCurrencyInstance(Locale("en", "US"))
+private val inrFormat = NumberFormat.getCurrencyInstance(Locale.of("en", "IN"))
+private val usdFormat = NumberFormat.getCurrencyInstance(Locale.of("en", "US"))
 
 /** Format currency based on active market mode. */
 fun formatCurrency(amount: Double): String {

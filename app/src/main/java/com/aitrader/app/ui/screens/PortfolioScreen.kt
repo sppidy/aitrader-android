@@ -332,7 +332,7 @@ private fun FieldRow(
                 keyboardOptions = KeyboardOptions(
                     keyboardType = kbd,
                     imeAction = ime,
-                    autoCorrect = false,
+                    autoCorrectEnabled = false,
                 ),
                 keyboardActions = KeyboardActions(onDone = { onImeDone?.invoke() }),
             )

@@ -1,8 +1,8 @@
 # Retrofit
 -keepattributes Signature
 -keepattributes *Annotation*
--keep class com.aitrader.app.model.** { *; }
--keepclassmembers class com.aitrader.app.model.** { *; }
+-keep class com.sppidy.janus.model.** { *; }
+-keepclassmembers class com.sppidy.janus.model.** { *; }
 
 # Gson
 -keep class com.google.gson.** { *; }
@@ -22,13 +22,13 @@
 -keepclasseswithmembers class **.*$Companion {
     kotlinx.serialization.KSerializer serializer(...);
 }
--keep,includedescriptorclasses class com.aitrader.app.navigation.**$$serializer { *; }
--keepclassmembers class com.aitrader.app.navigation.** {
+-keep,includedescriptorclasses class com.sppidy.janus.navigation.**$$serializer { *; }
+-keepclassmembers class com.sppidy.janus.navigation.** {
     *** Companion;
     kotlinx.serialization.KSerializer serializer(...);
 }
--keep class com.aitrader.app.navigation.*Route { *; }
--keep class com.aitrader.app.navigation.*Route$* { *; }
+-keep class com.sppidy.janus.navigation.*Route { *; }
+-keep class com.sppidy.janus.navigation.*Route$* { *; }
 
 # Markdown renderer (mikepenz/multiplatform-markdown-renderer) + intellij-markdown parser
 -keep class com.mikepenz.markdown.** { *; }

@@ -1,6 +1,6 @@
 # aitrader-android
 
-Android client for the AI Trading Agent. Part of [`trading-agent`](https://github.com/sppidy/trading-agent).
+Android client for the Janus. Part of [`janus`](https://github.com/sppidy/janus).
 
 - Kotlin + Jetpack Compose
 - Retrofit2 + Room (offline cache)
@@ -46,4 +46,4 @@ Bottom-nav: Dashboard · Portfolio (manual BUY/SELL) · Scanner · Charts · Age
 
 ## License
 
-[Apache-2.0](LICENSE). Contributing guidelines and security policy live in the [super-repo](https://github.com/sppidy/trading-agent).
+[Apache-2.0](LICENSE). Contributing guidelines and security policy live in the [super-repo](https://github.com/sppidy/janus).

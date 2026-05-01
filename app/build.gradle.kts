@@ -14,13 +14,13 @@ val apiKey = providers.gradleProperty("apiKey").orElse("change-me")
 val forexUrl = providers.gradleProperty("forexUrl").orElse("https://forex.example.com")
 
 android {
-    namespace = "com.aitrader.app"
+    namespace = "com.sppidy.janus"
     // 37 is required because androidx.biometric:1.4.0-alpha07 depends on
     // SDK extension level 36.1+. Bumping to 37 satisfies that.
     compileSdk = 37
 
     defaultConfig {
-        applicationId = "com.aitrader.app"
+        applicationId = "com.sppidy.janus"
         minSdk = 26
         targetSdk = 37
         versionCode = 1

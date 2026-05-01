@@ -1,20 +1,23 @@
 [versions]
-agp = "8.9.1"
-kotlin = "2.0.21"
-ksp = "2.0.21-1.0.27"
-kotlinxSerializationJson = "1.7.3"
-room = "2.6.1"
-coreKtx = "1.13.1"
-lifecycleRuntimeKtx = "2.8.6"
-activityCompose = "1.9.2"
-composeBom = "2024.09.03"
-nav3Core = "1.0.0-alpha10"
-retrofit = "2.11.0"
-okhttp = "4.12.0"
-gson = "2.11.0"
-coroutines = "1.9.0"
-biometric = "1.2.0-alpha05"
-appcompat = "1.7.0"
+agp = "9.2.0"
+kotlin = "2.3.21"
+ksp = "2.3.7"
+kotlinxSerializationJson = "1.11.0"
+room = "2.8.4"
+coreKtx = "1.18.0"
+lifecycleRuntimeKtx = "2.10.0"
+activityCompose = "1.13.0"
+composeBom = "2026.04.01"
+nav3Core = "1.2.0-alpha02"
+retrofit = "3.0.0"
+okhttp = "5.3.2"
+gson = "2.14.0"
+coroutines = "1.10.2"
+biometric = "1.4.0-alpha07"
+appcompat = "1.7.1"
+# Pinned at 0.27.0 — 0.40.x renamed several markdownColor/typography params
+# (codeText -> ?, inlineCodeText -> ?, linkText -> ?, typography.link removed).
+# Bumping requires updating ChatScreen.kt's Markdown(...) call sites.
 markdownRenderer = "0.27.0"
 
 [libraries]
@@ -46,8 +49,9 @@ kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-
 markdown-renderer-m3 = { group = "com.mikepenz", name = "multiplatform-markdown-renderer-m3", version.ref = "markdownRenderer" }
 
 [plugins]
+# Note: AGP 9 ships built-in Kotlin support — the org.jetbrains.kotlin.android
+# plugin is no longer needed (and is incompatible with the new DSL).
 android-application = { id = "com.android.application", version.ref = "agp" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

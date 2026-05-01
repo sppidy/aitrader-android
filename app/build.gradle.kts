@@ -1,6 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
+    // AGP 9 ships built-in Kotlin — kotlin-android plugin alias removed.
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
@@ -15,21 +15,19 @@ val forexUrl = providers.gradleProperty("forexUrl").orElse("https://forex.exampl
 
 android {
     namespace = "com.aitrader.app"
-    compileSdk = 36
+    // 37 is required because androidx.biometric:1.4.0-alpha07 depends on
+    // SDK extension level 36.1+. Bumping to 37 satisfies that.
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.aitrader.app"
         minSdk = 26
-        targetSdk = 36
+        targetSdk = 37
         versionCode = 1
         versionName = "1.0"
-
-        // Centralized server config from gradle.properties
-        buildConfigField("String", "DEFAULT_BASE_URL", "\"${apiScheme.get()}://${apiHost.get()}:${apiPort.get()}\"")
-        buildConfigField("String", "DEFAULT_WS_URL", "\"${wsScheme.get()}://${apiHost.get()}:${apiPort.get()}\"")
-        buildConfigField("String", "DEFAULT_API_KEY", "\"${apiKey.get()}\"")
-        // Forex defaults
-        buildConfigField("String", "DEFAULT_FOREX_URL", "\"${forexUrl.get()}\"")
+        // BuildConfig fields are wired via the new androidComponents.onVariants
+        // API below — defaultConfig.buildConfigField() is no longer the
+        // canonical place under the AGP 9 DSL.
     }
 
     signingConfigs {
@@ -65,13 +63,56 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 
-    kotlinOptions {
-        jvmTarget = "11"
-    }
+    // kotlinOptions {} removed — built-in Kotlin defaults
+    // kotlin.compilerOptions.jvmTarget to compileOptions.targetCompatibility
+    // (which is JVM_11 above), so an explicit block isn't needed.
 
     buildFeatures {
         compose = true
         buildConfig = true
+    }
+}
+
+// New AGP 9 DSL: BuildConfig fields are added per-variant rather than via
+// defaultConfig.buildConfigField(). The values are computed at configuration
+// time from gradle.properties (apiHost, apiPort, apiScheme, wsScheme, apiKey,
+// forexUrl) so the same APK build can be re-pointed by overriding properties.
+androidComponents {
+    onVariants { variant ->
+        val baseUrl = "${apiScheme.get()}://${apiHost.get()}:${apiPort.get()}"
+        val wsUrl = "${wsScheme.get()}://${apiHost.get()}:${apiPort.get()}"
+        variant.buildConfigFields?.put(
+            "DEFAULT_BASE_URL",
+            com.android.build.api.variant.BuildConfigField(
+                type = "String",
+                value = "\"$baseUrl\"",
+                comment = null,
+            )
+        )
+        variant.buildConfigFields?.put(
+            "DEFAULT_WS_URL",
+            com.android.build.api.variant.BuildConfigField(
+                type = "String",
+                value = "\"$wsUrl\"",
+                comment = null,
+            )
+        )
+        variant.buildConfigFields?.put(
+            "DEFAULT_API_KEY",
+            com.android.build.api.variant.BuildConfigField(
+                type = "String",
+                value = "\"${apiKey.get()}\"",
+                comment = null,
+            )
+        )
+        variant.buildConfigFields?.put(
+            "DEFAULT_FOREX_URL",
+            com.android.build.api.variant.BuildConfigField(
+                type = "String",
+                value = "\"${forexUrl.get()}\"",
+                comment = null,
+            )
+        )
     }
 }
 

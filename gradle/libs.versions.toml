@@ -1,5 +1,5 @@
 [versions]
-agp = "9.2.0"
+agp = "9.2.1"
 kotlin = "2.3.21"
 ksp = "2.3.7"
 kotlinxSerializationJson = "1.11.0"
@@ -7,7 +7,7 @@ room = "2.8.4"
 coreKtx = "1.18.0"
 lifecycleRuntimeKtx = "2.10.0"
 activityCompose = "1.13.0"
-composeBom = "2026.04.01"
+composeBom = "2026.05.00"
 nav3Core = "1.2.0-alpha02"
 retrofit = "3.0.0"
 okhttp = "5.3.2"
@@ -18,7 +18,7 @@ appcompat = "1.7.1"
 # Pinned at 0.27.0 — 0.40.x renamed several markdownColor/typography params
 # (codeText -> ?, inlineCodeText -> ?, linkText -> ?, typography.link removed).
 # Bumping requires updating ChatScreen.kt's Markdown(...) call sites.
-markdownRenderer = "0.27.0"
+markdownRenderer = "0.40.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }

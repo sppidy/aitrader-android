@@ -59,6 +59,7 @@ fun SettingsScreen() {
     val activity = LocalContext.current as? FragmentActivity
     val scope = rememberCoroutineScope()
     val agentName by AppPreferences.agentName.collectAsState()
+    val aiModel by AppPreferences.aiModel.collectAsState()
     val baseUrl by remember(marketMode) { mutableStateOf(AppPreferences.baseUrl) }
     val apiKey by remember(marketMode) { mutableStateOf(AppPreferences.apiKey) }
     // Recompose-on-save trigger
@@ -201,7 +202,7 @@ fun SettingsScreen() {
         Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
             SettingRow(
                 label = "AI MODEL",
-                value = "Claude Haiku 4.5",
+                value = aiModel,
             )
             SettingRow(
                 label = "BACKEND",

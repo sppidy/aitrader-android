@@ -42,6 +42,8 @@ object AppPreferences {
     val selectedPortfolio: StateFlow<String> = _selectedPortfolio
     private val _agentName = MutableStateFlow("Janus")
     val agentName: StateFlow<String> = _agentName
+    private val _aiModel = MutableStateFlow("AI Cascade")
+    val aiModel: StateFlow<String> = _aiModel
 
     fun init(context: Context) {
         this.context = context.applicationContext
@@ -63,6 +65,10 @@ object AppPreferences {
 
     fun setAgentName(name: String) {
         _agentName.value = name
+    }
+
+    fun setAiModel(model: String) {
+        _aiModel.value = model
     }
 
     val baseUrl: String

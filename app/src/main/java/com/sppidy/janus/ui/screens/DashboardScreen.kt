@@ -70,31 +70,15 @@ fun DashboardScreen(
                         fontWeight = FontWeight.Medium,
                         fontFamily = NeonTokens.MonoFamily,
                     )
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Text(
-                            "NEON",
-                            color = NeonTokens.Text,
-                            fontSize = 24.sp,
-                            fontWeight = FontWeight.Bold,
-                            fontFamily = NeonTokens.DisplayFamily,
-                            letterSpacing = (-0.5).sp,
-                        )
-                        Text(
-                            ".",
-                            color = NeonTokens.Neon,
-                            fontSize = 24.sp,
-                            fontWeight = FontWeight.Bold,
-                            fontFamily = NeonTokens.DisplayFamily,
-                        )
-                        Text(
-                            "TRADER",
-                            color = NeonTokens.Text,
-                            fontSize = 24.sp,
-                            fontWeight = FontWeight.Bold,
-                            fontFamily = NeonTokens.DisplayFamily,
-                            letterSpacing = (-0.5).sp,
-                        )
-                    }
+                    val agentName by AppPreferences.agentName.collectAsState()
+                    Text(
+                        agentName.uppercase(),
+                        color = NeonTokens.Text,
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Bold,
+                        fontFamily = NeonTokens.DisplayFamily,
+                        letterSpacing = (-0.5).sp,
+                    )
                 }
                 Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                     Tag(text = marketMode, color = NeonTokens.Neon)

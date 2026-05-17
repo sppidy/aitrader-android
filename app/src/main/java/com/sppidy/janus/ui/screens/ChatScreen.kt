@@ -27,6 +27,7 @@ import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.text.TextLinkStyles
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
@@ -357,9 +358,6 @@ private fun AgentMarkdown(content: String) {
         content = content,
         colors = markdownColor(
             text = NeonTokens.Text,
-            codeText = NeonTokens.Neon,
-            inlineCodeText = NeonTokens.Neon,
-            linkText = NeonTokens.Neon,
             codeBackground = NeonTokens.BgElev2,
             inlineCodeBackground = NeonTokens.BgElev2,
             dividerColor = NeonTokens.Border,
@@ -379,7 +377,7 @@ private fun AgentMarkdown(content: String) {
             bullet = baseText,
             list = baseText,
             ordered = baseText,
-            link = baseText.copy(color = NeonTokens.Neon),
+            textLink = TextLinkStyles(style = baseText.copy(color = NeonTokens.Neon).toSpanStyle()),
         ),
     )
 }

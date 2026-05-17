@@ -15,9 +15,6 @@ gson = "2.14.0"
 coroutines = "1.11.0"
 biometric = "1.4.0-alpha07"
 appcompat = "1.7.1"
-# Pinned at 0.27.0 — 0.40.x renamed several markdownColor/typography params
-# (codeText -> ?, inlineCodeText -> ?, linkText -> ?, typography.link removed).
-# Bumping requires updating ChatScreen.kt's Markdown(...) call sites.
 markdownRenderer = "0.40.2"
 
 [libraries]

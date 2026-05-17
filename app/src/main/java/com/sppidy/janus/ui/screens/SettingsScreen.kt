@@ -186,8 +186,8 @@ fun SettingsScreen() {
                     PortfolioRow(
                         value = "eval",
                         label = "EVAL",
-                        sub = "Rs. 10K sandbox",
-                        amount = "Rs. 10K",
+                        sub = "Rs. 1 Cr model-only",
+                        amount = "Rs. 1Cr",
                         selected = selectedPortfolio == "eval",
                         firstRow = false,
                     ) { AppPreferences.setSelectedPortfolio("eval") }
@@ -299,7 +299,7 @@ fun SettingsScreen() {
         // ── About footer ──────────────────────────────────
         Spacer(Modifier.height(8.dp))
         Text(
-            "NEON.TRADER v${BuildConfig.VERSION_NAME} · BUILD 0x${BuildConfig.VERSION_CODE.toString(16).uppercase().padStart(4, '0')}",
+            "JANUS v${BuildConfig.VERSION_NAME} · BUILD 0x${BuildConfig.VERSION_CODE.toString(16).uppercase().padStart(4, '0')}",
             color = NeonTokens.TextDim,
             fontSize = 9.sp,
             letterSpacing = 2.sp,

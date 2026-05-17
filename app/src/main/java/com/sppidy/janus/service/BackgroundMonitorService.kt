@@ -196,6 +196,7 @@ class BackgroundMonitorService : Service() {
     private fun appLaunchIntent(): PendingIntent {
         val intent = Intent(this, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP
+            setPackage(packageName)
         }
         return PendingIntent.getActivity(
             this,

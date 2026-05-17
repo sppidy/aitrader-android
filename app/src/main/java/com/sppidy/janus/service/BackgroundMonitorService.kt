@@ -4,6 +4,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.app.Service
+import android.content.ComponentName
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
@@ -194,10 +195,9 @@ class BackgroundMonitorService : Service() {
             .build()
 
     private fun appLaunchIntent(): PendingIntent {
-        val intent = Intent().apply {
-            setClassName(this@BackgroundMonitorService, MainActivity::class.java.name)
-            flags = Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP
-        }
+        val intent = Intent(Intent.ACTION_MAIN)
+        intent.component = ComponentName(this, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP
         return PendingIntent.getActivity(
             this,
             0,

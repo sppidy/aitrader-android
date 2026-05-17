@@ -37,9 +37,11 @@ object AppPreferences {
     val backgroundMonitorEnabled: StateFlow<Boolean> = _backgroundMonitorEnabled
     private val _marketMode = MutableStateFlow("NSE")
     val marketMode: StateFlow<String> = _marketMode
-    // Parallel paper portfolios (NSE only): 'main' (data-harvesting) or 'eval' (Rs.10k evaluation).
+    // Parallel paper portfolios (NSE only): 'main' (LLM-assisted) or 'eval' (model-only).
     private val _selectedPortfolio = MutableStateFlow("main")
     val selectedPortfolio: StateFlow<String> = _selectedPortfolio
+    private val _agentName = MutableStateFlow("Janus")
+    val agentName: StateFlow<String> = _agentName
 
     fun init(context: Context) {
         this.context = context.applicationContext
@@ -58,6 +60,10 @@ object AppPreferences {
     }
 
     fun getSelectedPortfolio(): String = _selectedPortfolio.value
+
+    fun setAgentName(name: String) {
+        _agentName.value = name
+    }
 
     val baseUrl: String
         get() {

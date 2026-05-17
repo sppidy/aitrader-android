@@ -6,6 +6,7 @@ import com.google.gson.annotations.SerializedName
 
 data class StatusResponse(
     val status: String,
+    @SerializedName("agent_name") val agentName: String? = null,
     val summary: PortfolioSummary?,
     val positions: List<Position>?,
     @SerializedName("recent_trades") val recentTrades: List<Trade>?,

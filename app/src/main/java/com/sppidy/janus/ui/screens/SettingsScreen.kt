@@ -58,6 +58,7 @@ fun SettingsScreen() {
     var showApiKeyDialog by remember { mutableStateOf(false) }
     val activity = LocalContext.current as? FragmentActivity
     val scope = rememberCoroutineScope()
+    val agentName by AppPreferences.agentName.collectAsState()
     val baseUrl by remember(marketMode) { mutableStateOf(AppPreferences.baseUrl) }
     val apiKey by remember(marketMode) { mutableStateOf(AppPreferences.apiKey) }
     // Recompose-on-save trigger
@@ -105,7 +106,7 @@ fun SettingsScreen() {
                     contentAlignment = Alignment.Center,
                 ) {
                     Text(
-                        "SP",
+                        agentName.take(2).uppercase(),
                         color = NeonTokens.Neon,
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Bold,
@@ -114,7 +115,7 @@ fun SettingsScreen() {
                 }
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
-                        "spidy.trader",
+                        agentName.lowercase(),
                         color = NeonTokens.Text,
                         fontSize = 13.sp,
                         fontWeight = FontWeight.Bold,

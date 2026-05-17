@@ -100,6 +100,7 @@ class DashboardViewModel : ViewModel() {
             try {
                 val response = repository.getStatus()
                 if (response.status == "ok") {
+                    response.agentName?.let { AppPreferences.setAgentName(it) }
                     _summary.value = response.summary
                     _positions.value = response.positions ?: emptyList()
                     _recentTrades.value = response.recentTrades ?: emptyList()
